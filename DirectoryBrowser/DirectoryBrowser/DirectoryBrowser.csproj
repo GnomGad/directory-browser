@@ -52,7 +52,6 @@
     <Compile Include="FormDirectoryBrowser.Designer.cs">
       <DependentUpon>FormDirectoryBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Language.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDirectoryBrowser.resx">
