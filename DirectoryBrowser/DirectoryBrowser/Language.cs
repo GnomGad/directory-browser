@@ -19,19 +19,24 @@ namespace DirectoryBrowser
     [Serializable]
     public class XmlLanguage
     {
+
         public string Language { get; set; }
         public string FormDirectoryBrowser { get; set; }
+        public string fileToolStripMenuItem { get; set; }
+        public string openToolStripMenuItem { get; set; }
+        public string saveToolStripMenuItem { get; set; }
+        public string exitToolStripMenuItem { get; set; }
+        public string settingsToolStripMenuItem { get; set; }
+        public string fontToolStripMenuItem { get; set; }
+        public string colorToolStripMenuItem { get; set; }
+        public string languageToolStripMenuItem { get; set; }
+        public string helpToolStripMenuItem { get; set; }
 
         public XmlLanguage()
         {
-
+            
         }
-        /*
-        public XmlLanguage(string Language, string FormDirectoryBrowser)
-        {
-            this.Language = Language;
-            this.FormDirectoryBrowser = FormDirectoryBrowser;
-        }*/
+
     }
     /// <summary>
     /// Класс для путей
@@ -83,11 +88,11 @@ namespace DirectoryBrowser
             }
             
         }
-        public XmlLanguage DeserializeXmSystemlLanguage()//траблы с читкой
+        public XmlLanguage DeserializeXmSystemlLanguage()
         {
             using (FileStream fs = new FileStream(Constants.PathSystemLanguage_xml, FileMode.OpenOrCreate))
             {
-                XmlLanguage NewSysLangs = (XmlLanguage)formatterLanguages.Deserialize(fs);
+                XmlLanguage NewSysLangs = (XmlLanguage)formatterLanguageXml.Deserialize(fs);
                 return NewSysLangs;
 
             }

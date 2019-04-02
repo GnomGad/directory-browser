@@ -18,8 +18,9 @@ namespace DirectoryBrowser
             //WriteSystemLanguageInfo();
             //Language kek = new Language();
             //kek.Test();
-            //WriteSystemLanguageInfo();
-            SetLanguage(ReadSystemLanguage());
+          //  WriteSystemLanguageInfo();
+
+           // SetLanguage(ReadSystemLanguage());
             
 
         }
@@ -39,17 +40,44 @@ namespace DirectoryBrowser
             Lang.languageXml = kek;
             Lang.Test();
         }    
+        /// <summary>
+        /// Из системы вывести в xml
+        /// </summary>
+        /// <returns></returns>
         public XmlLanguage SetXmlLanguage()// вечное изменение
         {
-            XmlLanguage XML = new XmlLanguage();
-            XML.Language = "Sysyem";
-            XML.FormDirectoryBrowser = Text;
-            return XML;
+            XmlLanguage Xml = new XmlLanguage();
+            Xml.Language = "Sysyem";
+            Xml.FormDirectoryBrowser = Text;
+            Xml.fileToolStripMenuItem = fileToolStripMenuItem.Text;
+            Xml.openToolStripMenuItem = openToolStripMenuItem.Text;
+            Xml.saveToolStripMenuItem = saveToolStripMenuItem.Text;
+            Xml.exitToolStripMenuItem = exitToolStripMenuItem.Text;
+            Xml.settingsToolStripMenuItem = settingsToolStripMenuItem.Text;
+            Xml.fontToolStripMenuItem = fontToolStripMenuItem.Text;
+            Xml.colorToolStripMenuItem = colorToolStripMenuItem.Text;
+            Xml.languageToolStripMenuItem = languageToolStripMenuItem.Text;
+            Xml.helpToolStripMenuItem = helpToolStripMenuItem.Text;
+            return Xml;
         }
+        /// <summary>
+        /// Конечно изменить данные системы
+        /// </summary>
+        /// <param name="Xml"></param>
         public void SetLanguage(XmlLanguage Xml)// вечное изменение
         {
-            languageToolStripMenuItem.Text = Xml.Language;
             Text = Xml.FormDirectoryBrowser;
+            languageToolStripMenuItem.Text = Xml.languageToolStripMenuItem;
+            fileToolStripMenuItem.Text = Xml.fileToolStripMenuItem;
+            openToolStripMenuItem.Text = Xml.openToolStripMenuItem;
+            saveToolStripMenuItem.Text = Xml.saveToolStripMenuItem;
+            exitToolStripMenuItem.Text = Xml.exitToolStripMenuItem;
+            settingsToolStripMenuItem.Text  = Xml.settingsToolStripMenuItem;
+            fontToolStripMenuItem.Text = Xml.fontToolStripMenuItem;
+            colorToolStripMenuItem.Text = Xml.colorToolStripMenuItem;
+            languageToolStripMenuItem.Text = Xml.languageToolStripMenuItem;
+            helpToolStripMenuItem.Text = Xml.helpToolStripMenuItem;
+
         }
     }
 }
