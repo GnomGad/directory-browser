@@ -56,7 +56,7 @@
     <Compile Include="FormDirectoryBrowser.Designer.cs">
       <DependentUpon>FormDirectoryBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Messages\MessageBug.cs" />
+    <Compile Include="Messages\Messages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDirectoryBrowser.resx">
@@ -67,6 +67,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="PartTwoFoldersMethods.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>

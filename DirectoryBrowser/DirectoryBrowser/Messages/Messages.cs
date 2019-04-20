@@ -2,16 +2,20 @@
 
 namespace DirectoryBrowser.Messages
 {
-    class MessageBug
+    class Messages
     {
-        public virtual void Show(string text)
+
+    }
+    static class MessageBug
+    {
+        static public void Show(string text)
         {
             MessageBox.Show(text, "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
         }
     }
-    class MessageInfo
+    static class MessageInfo
     {
-        public virtual void Show(string text)
+        public static void Show(string text)
         {
             MessageBox.Show(text, "Информация!", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using DirectoryBrowser.App;
-using DirectoryBrowser.Messages;
+using MyMessage = DirectoryBrowser.Messages;
 
 namespace DirectoryBrowser
 {
@@ -28,12 +28,14 @@ namespace DirectoryBrowser
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            appFolder.SelectPath = appFolder.OpenDirectory();
+            ForOpenButton();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            appFolder.SelectPath = appFolder.OpenDirectory();
+            ForOpenButton();
         }
+
+
     }
 }

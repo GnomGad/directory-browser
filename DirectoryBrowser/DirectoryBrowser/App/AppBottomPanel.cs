@@ -9,7 +9,6 @@ namespace DirectoryBrowser.App
     /// </summary>
     class AppBottomPanel
     {
-        MessageBug messageBug = new MessageBug();
        
     }
 }
