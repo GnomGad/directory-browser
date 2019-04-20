@@ -36,6 +36,19 @@ namespace DirectoryBrowser
             ForOpenButton();
         }
 
+        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+          
+        }
 
+        private void listView1_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            //минус
+            if (e.CurrentValue == CheckState.Checked && e.NewValue == CheckState.Unchecked)
+                UnCheckedMethod(ulong.Parse(listView1.Items[e.Index].SubItems[1].Text));
+            else if (e.CurrentValue == CheckState.Unchecked && e.NewValue == CheckState.Checked)
+                CheckedMethod(ulong.Parse(listView1.Items[e.Index].SubItems[1].Text));
+            SetBottomMenu();
+        }
     }
 }

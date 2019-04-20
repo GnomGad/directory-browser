@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 
-using DirectoryBrowser.Messages;
-
 namespace DirectoryBrowser.App
 {
     /// <summary>
@@ -20,10 +18,25 @@ namespace DirectoryBrowser.App
         {
             ItemSelected = k.Count;
             AllItems = k.Count;
+
             ulong ul = 0;
             foreach (ulong s in k.Values)
                 ul += s;
             TotalBytes = ul;
+        }
+
+        public AppBottomPanel(int items)
+        {
+            ItemSelected = 0;
+            AllItems = items;
+            TotalBytes = 0;
+        }
+
+        public AppBottomPanel()
+        {
+            ItemSelected = 0;
+            AllItems = 0;
+            TotalBytes = 0;
         }
         public  int ItemSelected { get;private set; }
         public ulong TotalBytes { get;private set; }
@@ -39,14 +52,19 @@ namespace DirectoryBrowser.App
             ItemSelected = ItemSelected - minus;
         }
 
-        public void PlusTotalBytes(uint plus)
+        public void PlusTotalBytes(ulong plus)
         {
             TotalBytes += plus;
         }
 
-        public void MinusTotalBytes(uint minus)
+        public void MinusTotalBytes(ulong minus)
         {
             TotalBytes = TotalBytes - minus;
+        }
+
+        public void SetAllItems(int total)
+        {
+            AllItems = total;
         }
     }
 }
