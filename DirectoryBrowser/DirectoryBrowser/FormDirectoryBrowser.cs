@@ -8,31 +8,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using DirectoryBrowser.App;
+using DirectoryBrowser.Messages;
 
 namespace DirectoryBrowser
 {
     public partial class FormDirectoryBrowser : Form
     {
-        AppFirst appFirst;
-        AppDownStatus appDownStatus;
+        AppFolder appFolder;
+        AppBottomPanel appDownStatus;
 
         public FormDirectoryBrowser()
         {
             InitializeComponent();
-            appFirst = new AppFirst();
-            appDownStatus = new AppDownStatus();
+            appFolder = new AppFolder();
+            appDownStatus = new AppBottomPanel();
 
         }
 
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            appFirst.SelectPath = appFirst.OpenDirectory();
+            appFolder.SelectPath = appFolder.OpenDirectory();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            appFirst.SelectPath = appFirst.OpenDirectory();
+            appFolder.SelectPath = appFolder.OpenDirectory();
         }
     }
 }

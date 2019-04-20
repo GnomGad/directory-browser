@@ -47,13 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
+    <Compile Include="App\App.cs" />
+    <Compile Include="App\AppBottomPanel.cs" />
+    <Compile Include="App\AppFolder.cs" />
     <Compile Include="FormDirectoryBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormDirectoryBrowser.Designer.cs">
       <DependentUpon>FormDirectoryBrowser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Messages\MessageBug.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDirectoryBrowser.resx">
