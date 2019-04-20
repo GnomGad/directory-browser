@@ -66,5 +66,11 @@ namespace DirectoryBrowser.App
         {
             AllItems = total;
         }
+
+        public void Remove()
+        {
+            ItemSelected = 0;
+            TotalBytes = 0;
+        }
     }
 }

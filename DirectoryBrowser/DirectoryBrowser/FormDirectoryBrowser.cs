@@ -22,6 +22,8 @@ namespace DirectoryBrowser
         {
             InitializeComponent();
             appFolder = new AppFolder();
+            appBottomPanel = new AppBottomPanel();
+            infoFile = new Dictionary<string, ulong>();
             //appDownStatus = new AppBottomPanel();
 
         }
@@ -62,6 +64,41 @@ namespace DirectoryBrowser
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveOpen();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            HelpOpen();
+        }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpOpen();
+        }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontStyle();
+        }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorStyle();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            SettingStyle();
+        }
+
+        private void EmptyMethod(object sender, EventArgs e)
+        {
+
         }
     }
 }

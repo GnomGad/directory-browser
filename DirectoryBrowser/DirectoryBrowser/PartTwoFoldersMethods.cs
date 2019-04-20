@@ -18,14 +18,16 @@ namespace DirectoryBrowser
         
         public void OpenDirectoryAndSetSelectPath()
         {
+
             appFolder.OpenDirectory();
         }
         public void SetTreeView()
         {
-            infoFile = new Dictionary<string, ulong>();
+
+            infoFile.Clear();
             treeView1.Nodes.Clear();
             treeView1.Nodes.Add(SetTreeNodes(new TreeNode(), appFolder.SelectPath, 0));
-            appBottomPanel = new AppBottomPanel();
+            appBottomPanel.Remove();
             SetListView();
             
 
@@ -70,8 +72,13 @@ namespace DirectoryBrowser
         }
 
         public void SetListView()
-        {
+        {///ПОЧИНИТЬ 
+            if(listView1.ItemCheck == null)
+                listView1.ItemCheck += EmptyMethod;
+            listView1.ItemCheck += listView1_ItemCheck1;
+            
             CountExtensions = new Dictionary<string, int>();
+            CountExtensions.Clear();
             ClearBottomMenu();
             listView1.Items.Clear();
             ListViewItem[] lsi = new ListViewItem[infoFile.Count];
@@ -113,6 +120,7 @@ namespace DirectoryBrowser
                     listView1.Items.Add(k).Checked = true;
             }
 
+            
             listView1.ItemCheck += listView1_ItemCheck1;
         }
 
@@ -161,9 +169,16 @@ namespace DirectoryBrowser
             AppSaveInfo saveInfo = new AppSaveInfo();
             saveInfo.SetPath();
             StringBuilder kek = new StringBuilder();
+            kek.AppendLine($"Bytes: {appBottomPanel.TotalBytes} {appBottomPanel.ItemSelected,10} items ");
             for (int i = 0; i<listView1.Items.Count;i++)
                 kek.AppendLine(listView1.Items[i].SubItems[0].Text+"  "+ listView1.Items[i].SubItems[1].Text+" Bytes");
            saveInfo.Write(kek.ToString());
+        }
+
+        public void HelpOpen()
+        {
+            AppHelp h = new AppHelp();
+            h.Help();
         }
 
     }

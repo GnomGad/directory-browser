@@ -50,6 +50,7 @@
     <Compile Include="App\App.cs" />
     <Compile Include="App\AppBottomPanel.cs" />
     <Compile Include="App\AppFolder.cs" />
+    <Compile Include="App\AppHelp.cs" />
     <Compile Include="App\AppSaveInfo.cs" />
     <Compile Include="FormDirectoryBrowser.cs">
       <SubType>Form</SubType>
@@ -58,6 +59,9 @@
       <DependentUpon>FormDirectoryBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="Messages\Messages.cs" />
+    <Compile Include="PartThirdFontAndColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormDirectoryBrowser.resx">
