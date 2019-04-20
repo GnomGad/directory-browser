@@ -16,13 +16,13 @@ namespace DirectoryBrowser
     public partial class FormDirectoryBrowser : Form
     {
         AppFolder appFolder;
-        AppBottomPanel appDownStatus;
+        AppBottomPanel appBottomPanel;
 
         public FormDirectoryBrowser()
         {
             InitializeComponent();
             appFolder = new AppFolder();
-            appDownStatus = new AppBottomPanel();
+            //appDownStatus = new AppBottomPanel();
 
         }
 
