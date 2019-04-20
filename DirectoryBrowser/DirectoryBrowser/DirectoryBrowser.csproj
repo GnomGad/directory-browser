@@ -50,6 +50,7 @@
     <Compile Include="App\App.cs" />
     <Compile Include="App\AppBottomPanel.cs" />
     <Compile Include="App\AppFolder.cs" />
+    <Compile Include="App\AppSaveInfo.cs" />
     <Compile Include="FormDirectoryBrowser.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -36,19 +36,32 @@ namespace DirectoryBrowser
             ForOpenButton();
         }
 
-        private void listView1_ItemChecked(object sender, ItemCheckedEventArgs e)
-        {
-          
-        }
-
-        private void listView1_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void listView1_ItemCheck1(object sender, ItemCheckEventArgs e)
         {
             //минус
             if (e.CurrentValue == CheckState.Checked && e.NewValue == CheckState.Unchecked)
+            {
                 UnCheckedMethod(ulong.Parse(listView1.Items[e.Index].SubItems[1].Text));
+                CountExtensions[listView1.Items[e.Index].SubItems[2].Text] = CountExtensions[listView1.Items[e.Index].SubItems[2].Text] - 1;
+            }
             else if (e.CurrentValue == CheckState.Unchecked && e.NewValue == CheckState.Checked)
+            {
                 CheckedMethod(ulong.Parse(listView1.Items[e.Index].SubItems[1].Text));
+                CountExtensions[listView1.Items[e.Index].SubItems[2].Text] = CountExtensions[listView1.Items[e.Index].SubItems[2].Text] + 1;
+            }
             SetBottomMenu();
+
+            SetChart();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            SaveOpen();
+        }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveOpen();
         }
     }
 }

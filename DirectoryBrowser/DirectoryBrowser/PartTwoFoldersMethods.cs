@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DirectoryBrowser.App;
+using System.Drawing;
 using Mes = DirectoryBrowser.Messages;
 
 namespace DirectoryBrowser
@@ -83,21 +84,36 @@ namespace DirectoryBrowser
             appBottomPanel.SetAllItems(i1);
             int i2 = 0;
             foreach (int k in infoFile.Values)
+            {
                 lsi[i2++].SubItems.Add(k.ToString());
+                CheckedMethod((ulong)k);
+            }
             int i3 = 0;
             foreach (string k in infoFile.Keys)
             {
                 
                 lsi[i3++].SubItems.Add(Path.GetExtension(k));
+
                 if (CountExtensions.ContainsKey(Path.GetExtension(k)))
                     CountExtensions[Path.GetExtension(k)]++;
                 else
                     CountExtensions[Path.GetExtension(k)] = 1;
             }
-            
-            foreach (ListViewItem k in lsi)
-                listView1.Items.Add(k).Checked = true;
 
+            foreach (ListViewItem k in lsi)
+            {
+                if (k.SubItems[2].Text == ".png" || k.SubItems[2].Text == ".jpg" || k.SubItems[2].Text == ".bmp" || k.SubItems[2].Text == ".gif")
+                    k.BackColor = Color.FromArgb(81, 168, 145);
+                else if (k.SubItems[2].Text == ".docx" || k.SubItems[2].Text == ".xlsx" || k.SubItems[2].Text == ".pdf" || k.SubItems[2].Text == ".txt")
+                    k.BackColor = Color.FromArgb(197, 204, 240);
+                else if (k.SubItems[2].Text == ".exe" || k.SubItems[2].Text == ".dll")
+                    k.BackColor = Color.FromArgb(255, 168, 145);
+                else if (k.SubItems[2].Text == ".zip" || k.SubItems[2].Text == ".rar" || k.SubItems[2].Text == ".7z")
+                    k.BackColor = Color.FromArgb(255,80,25);
+                    listView1.Items.Add(k).Checked = true;
+            }
+
+            listView1.ItemCheck += listView1_ItemCheck1;
         }
 
         public void SetBottomMenu()
@@ -118,9 +134,10 @@ namespace DirectoryBrowser
             chart1.Series.Add("Extension");
             string[] ext =CountExtensions.Keys.ToArray();
             int[] val = CountExtensions.Values.ToArray();
-            for (int i = 0; i < CountExtensions.Count;i++)
+            for (int i = 0; i < val.Length;i++)
                 chart1.Series[0].Points.AddXY(ext[i], val[i]);
         }
+
         /// <summary>
         /// Снятие элемнта
         /// </summary>
@@ -137,6 +154,16 @@ namespace DirectoryBrowser
         {
             appBottomPanel.PlusTotalBytes(bytes);
             appBottomPanel.PlusItemSelected(1);
+        }
+
+        public void SaveOpen()
+        {
+            AppSaveInfo saveInfo = new AppSaveInfo();
+            saveInfo.SetPath();
+            StringBuilder kek = new StringBuilder();
+            for (int i = 0; i<listView1.Items.Count;i++)
+                kek.AppendLine(listView1.Items[i].SubItems[0].Text+"  "+ listView1.Items[i].SubItems[1].Text+" Bytes");
+           saveInfo.Write(kek.ToString());
         }
 
     }
