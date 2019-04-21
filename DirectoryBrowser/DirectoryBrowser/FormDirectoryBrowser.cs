@@ -25,7 +25,7 @@ namespace DirectoryBrowser
             appBottomPanel = new AppBottomPanel();
             infoFile = new Dictionary<string, ulong>();
             CountExtensions = new Dictionary<string, int>();
-            //appDownStatus = new AppBottomPanel();
+            listView1_Resize(new object(),new EventArgs());
 
         }
 
@@ -101,6 +101,13 @@ namespace DirectoryBrowser
         private void EmptyMethod(object sender, EventArgs e)
         {
 
+        }
+
+        private void listView1_Resize(object sender, EventArgs e)
+        {
+            listView1.Columns[1].Width = 130;
+            listView1.Columns[2].Width = 80;
+            listView1.Columns[0].Width = listView1.Width - 130 - 80;
         }
     }
 }
