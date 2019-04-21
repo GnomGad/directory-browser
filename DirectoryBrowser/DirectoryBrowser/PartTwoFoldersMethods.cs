@@ -31,25 +31,23 @@ namespace DirectoryBrowser
 
             infoFile.Clear();
             treeView1.Nodes.Clear();
-            treeView1.Nodes.Add(SetTreeNodes(new TreeNode(), appFolder.SelectPath, 0));
+            treeView1.Nodes.Add(SetTreeNodes(new TreeNode(appFolder.SelectPath), appFolder.SelectPath));
             appBottomPanel.Remove();
             SetListView();
             
 
         }
-
-        public TreeNode SetTreeNodes(TreeNode node ,string path,int index)
+        
+        public TreeNode SetTreeNodes(TreeNode node ,string path)
         {
-            //node.Text = path;
-            node.Nodes.Add(path); //1
 
-            List<string> firstChildren = appFolder.GetFolderData(path);// делаем лист
+            List<string> firstChildren = appFolder.GetFolderData(path);
             for(int i =0; i<firstChildren.Count;i++)
             {
-                node.Nodes[index].Nodes.Add(firstChildren[i]);
+                node.Nodes.Add(firstChildren[i]);
                 if (!Path.HasExtension(firstChildren[i])&& Directory.Exists(firstChildren[i]))
                 {
-                    SetTreeNodes(node.Nodes[index].Nodes[i], firstChildren[i], index);
+                    SetTreeNodes(node.Nodes[i], firstChildren[i]);
                 }
                 else
                 {
