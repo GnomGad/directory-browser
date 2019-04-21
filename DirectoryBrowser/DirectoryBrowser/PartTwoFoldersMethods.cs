@@ -15,11 +15,16 @@ namespace DirectoryBrowser
     {
         Dictionary<string, ulong> infoFile;
         Dictionary<string, int> CountExtensions;
-        
+        /// <summary>
+        /// Поставить труе при переоткрытии директории и false после записи
+        /// </summary>
+        private bool FLAG = false;
         public void OpenDirectoryAndSetSelectPath()
         {
 
             appFolder.OpenDirectory();
+            appBottomPanel.MinusTotalBytes(appBottomPanel.TotalBytes);
+            appBottomPanel.MinusItemSelected(appBottomPanel.ItemSelected);
         }
         public void SetTreeView()
         {
@@ -72,12 +77,8 @@ namespace DirectoryBrowser
         }
 
         public void SetListView()
-        {///ПОЧИНИТЬ 
-            if(listView1.ItemCheck == null)
-                listView1.ItemCheck += EmptyMethod;
-            listView1.ItemCheck += listView1_ItemCheck1;
-            
-            CountExtensions = new Dictionary<string, int>();
+        { 
+           
             CountExtensions.Clear();
             ClearBottomMenu();
             listView1.Items.Clear();
@@ -101,14 +102,13 @@ namespace DirectoryBrowser
                 
                 lsi[i3++].SubItems.Add(Path.GetExtension(k));
 
-                if (CountExtensions.ContainsKey(Path.GetExtension(k)))
-                    CountExtensions[Path.GetExtension(k)]++;
-                else
-                    CountExtensions[Path.GetExtension(k)] = 1;
+                if (!CountExtensions.ContainsKey(Path.GetExtension(k)))
+                    CountExtensions[Path.GetExtension(k)] = 0;
             }
-
+            FLAG = true;
             foreach (ListViewItem k in lsi)
             {
+                
                 if (k.SubItems[2].Text == ".png" || k.SubItems[2].Text == ".jpg" || k.SubItems[2].Text == ".bmp" || k.SubItems[2].Text == ".gif")
                     k.BackColor = Color.FromArgb(81, 168, 145);
                 else if (k.SubItems[2].Text == ".docx" || k.SubItems[2].Text == ".xlsx" || k.SubItems[2].Text == ".pdf" || k.SubItems[2].Text == ".txt")
@@ -120,8 +120,7 @@ namespace DirectoryBrowser
                     listView1.Items.Add(k).Checked = true;
             }
 
-            
-            listView1.ItemCheck += listView1_ItemCheck1;
+            FLAG = false;
         }
 
         public void SetBottomMenu()
@@ -153,6 +152,7 @@ namespace DirectoryBrowser
         {
             appBottomPanel.MinusTotalBytes(bytes);
             appBottomPanel.MinusItemSelected(1);
+            
         }
 
         /// <summary>
@@ -162,6 +162,9 @@ namespace DirectoryBrowser
         {
             appBottomPanel.PlusTotalBytes(bytes);
             appBottomPanel.PlusItemSelected(1);
+            if (FLAG)
+                UnCheckedMethod(bytes);
+            
         }
 
         public void SaveOpen()

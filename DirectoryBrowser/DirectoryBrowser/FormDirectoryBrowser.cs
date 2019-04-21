@@ -24,6 +24,7 @@ namespace DirectoryBrowser
             appFolder = new AppFolder();
             appBottomPanel = new AppBottomPanel();
             infoFile = new Dictionary<string, ulong>();
+            CountExtensions = new Dictionary<string, int>();
             //appDownStatus = new AppBottomPanel();
 
         }
@@ -52,8 +53,9 @@ namespace DirectoryBrowser
                 CountExtensions[listView1.Items[e.Index].SubItems[2].Text] = CountExtensions[listView1.Items[e.Index].SubItems[2].Text] + 1;
             }
             SetBottomMenu();
-
             SetChart();
+
+
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
